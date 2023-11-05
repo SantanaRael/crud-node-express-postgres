@@ -1,0 +1,45 @@
+version: '3.9'
+
+networks:
+  minha-rede:
+    driver:
+      bridge
+
+services:
+  database:
+    image: postgres
+    container_name: container_postgres
+    networks:
+      - minha-rede
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=banco-teste
+    volumes:
+      - .:/data
+      - ./create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
+
+  minha-api:
+    build: .
+    container_name: container_api
+    networks:
+      - minha-rede
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - database
+
+  web:
+    image: nginx
+    container_name: container_front-end
+    networks:
+      - minha-rede
+    volumes:
+    - ./public:/usr/share/nginx/html
+    ports:
+    - "8080:80"
+    depends_on:
+    - minha-api
