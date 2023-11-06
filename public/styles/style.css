@@ -209,4 +209,24 @@ input[type=text i] {
     padding: 6px 10px;
     width: 100px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+
+@media (max-width: 468px) {
+  .container {
+    padding: 0;
+  }
+
+  .botoes-dep {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    
+  }
+
+  .btn {
+    margin: 10px;
+  }
+}

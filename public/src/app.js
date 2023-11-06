@@ -9,7 +9,6 @@ let cadastrar = document.querySelector("#submit")
 const url = "http://localhost:3000/clientes/";
 
 
-
 //essa função faz um get na API e recebe o resultado na variavel response.data
 function consultarTodos(){
     axios.get(url)
