@@ -20,7 +20,7 @@ Fazer o clone e ir na pasta do projeto:
 
 ```sh
 git clone https://github.com/SantanaRael/api-template.git
-cd api-template
+cd crud-node-express-postgres
 ```
 
 Instalar as dependências do projeto:
@@ -29,7 +29,7 @@ Instalar as dependências do projeto:
 npm install
 ```
 
-Subir tres containers com a API e outro com postgres com o comando:
+Subir tres containers um com a API e outro com postgres e outro com o Front-end:
 
 ```sh
 docker-compose up -d
