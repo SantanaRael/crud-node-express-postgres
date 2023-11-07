@@ -61,5 +61,11 @@ Alguns screenshots da aplicação funcionando:
 ![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/a990bd30-7d94-4601-bacc-dadf0ff805fe)
 
 
+Print da maquina virtual rodando a aplicação:
+
+![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/3edf15ca-c018-45a3-8ef0-94e23496bc78)
+
+![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/d78ed880-3f8a-43bc-837c-c390e69d3e25)
+
 
 
