@@ -14,9 +14,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=banco-teste
+      - POSTGRES_USER=root #usuario postgres
+      - POSTGRES_PASSWORD=root #senha postgres
+      - POSTGRES_DB=banco-teste #nome do banco
     volumes:
       - .:/data
       - ./create_table.sql:/docker-entrypoint-initdb.d/create_table.sql
