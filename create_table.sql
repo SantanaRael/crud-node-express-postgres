@@ -5,4 +5,4 @@ CREATE TABLE clientes (
   cpf VARCHAR(255)
 );
 
-INSERT INTO clientes (nome, email, cpf) VALUES ('Israel Santana', 'israel100santana@gmail.com', '488.829.428-30');
+INSERT INTO clientes (nome, email, cpf) VALUES ('Israel Santana', 'israel100santana@gmail.com', '000.000.000-30');
