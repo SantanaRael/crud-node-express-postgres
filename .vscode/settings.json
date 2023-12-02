@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/v1%40service": "file:///home/rael/%C3%81rea%20de%20Trabalho/Projetos/Kubernetes/crud-node-express-postgres/k8s/postgres-deployment.yaml"
+    }
+}

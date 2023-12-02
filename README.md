@@ -1,3 +1,13 @@
+# Observação:
+
+Esse projeto ainda está em fase de desenvolvimento, estou implementando a tecnologia Kubernetes para a aplicação suportar mais requisições por minuto.
+
+
+Até o momento implementei apenas a parte do postgres, criando um deployment e um service para expor o banco de dados para fora da pod e fiz a parte da API, criando um deployment e um service.
+
+mais informações ao final da pagina.
+
+
 # Sistema de Gerenciamento de Pessoas
 
 O Sistema de Gerenciamento de Pessoas é uma aplicação web que permite o gerenciamento de informações de indivíduos, incluindo a criação, leitura, atualização e exclusão (CRUD) de registros de pessoas. Essa aplicação é construída com tecnologias modernas e é hospedada em contêineres Docker para garantir facilidade de implantação e escalabilidade.
@@ -68,4 +78,37 @@ Print da maquina virtual rodando a aplicação:
 ![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/d78ed880-3f8a-43bc-837c-c390e69d3e25)
 
 
+## Execução do Projeto no ambiente de desenvolvimento:
 
+Executar minikube
+
+```sh
+minikube start
+```
+
+Subir o deployment e o service do banco de dados e da API manualmente.
+
+```sh
+cd k8s
+
+kubectl apply -f postgres-deployment.yaml
+
+kubectl apply -f api-deployment.yaml
+```
+
+Acessar API pelo navegador
+
+```sh
+minikube service api-service --url
+```
+
+Obeservação: Caso haja alguma alteração no Host ou na Porta do Postgres, será necessario atualizar a imagem da api no Docker-hub pelo seguinte passo a passo:
+
+
+```sh
+docker build -t santanarael/minha-api:latest .
+
+docker login
+
+docker push santanarael/minha-api:latest 
+```
