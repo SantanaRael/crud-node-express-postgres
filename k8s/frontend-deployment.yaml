@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: frontend-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: frontend-volume
+        configMap:
+          name: frontend-configmap
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - protocol: TCP
+      port: 32323
+      targetPort: 80
+      nodePort: 32323
+  type: NodePort  
+

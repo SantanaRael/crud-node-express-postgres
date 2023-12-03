@@ -39,7 +39,6 @@ async function cadastrarCliente(cliente){
 }
 
 
-
 async function atualizaCliente(id, cliente){
     const client = await connect();
     const sql = "UPDATE clientes set nome=$1, email=$2, cpf=$3 WHERE id=$4"
