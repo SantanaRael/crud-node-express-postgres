@@ -1,13 +1,3 @@
-# Observação:
-
-Esse projeto ainda está em fase de desenvolvimento, estou implementando a tecnologia Kubernetes para a aplicação suportar mais requisições por minuto.
-
-
-Até o momento implementei apenas a parte do postgres, criando um deployment e um service para expor o banco de dados para fora da pod e fiz a parte da API, criando um deployment e um service.
-
-mais informações ao final da pagina.
-
-
 # Sistema de Gerenciamento de Pessoas
 
 O Sistema de Gerenciamento de Pessoas é uma aplicação web que permite o gerenciamento de informações de indivíduos, incluindo a criação, leitura, atualização e exclusão (CRUD) de registros de pessoas. Essa aplicação é construída com tecnologias modernas e é hospedada em contêineres Docker para garantir facilidade de implantação e escalabilidade.
@@ -18,9 +8,10 @@ O Sistema de Gerenciamento de Pessoas é uma aplicação web que permite o geren
 - [Express](https://expressjs.com/pt-br/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Docker](https://docs.docker.com/)
+- [Kubernetes](https://kubernetes.io/docs/home/)
 
 ## Dependencias:
-Para a execução do projeto, as seguintes dependências precisão ser satifeitas,
+Para a execução do projeto, as seguintes dependências precisão ser satisfeitas,
 - [Docker](https://docs.docker.com/get-docker/).
 - [NodeJS](https://nodejs.org/en), Versão: 18.x ou superior.
 
@@ -39,24 +30,31 @@ Instalar as dependências do projeto:
 npm install
 ```
 
-Subir tres containers um com a API e outro com postgres e outro com o Front-end:
+Subir o deployment e o service do banco de dados, API e front-end manualmente.
 
 ```sh
-docker-compose up -d
+kubectl apply -f postgres-deployment.yaml
+
+kubectl apply -f api-deployment.yaml
+
+kubectl apply -f frontend-configmap.yaml
+
+kubectl apply -f frontend-deployment.yaml
 ```
 
-Verificar se os containers subiram corretamente:
+
+Após subir a aplicação ficaram disponiveis nos links abaixo:
+
+API: http://IP-DO-SERVICE:30303/clientes
+
+Front-end: http://IP-DO-SERVICE:32323
+
+Para ver o IP do Service:
 
 ```sh
-docker ps
+minikube service api-service --url
 ```
 
-## Documentação da API
-Acessar aplicação pelo link:
-
-```sh
-http://localhost:8080/index.html
-```
 
 
 Alguns screenshots da aplicação funcionando:
@@ -71,38 +69,9 @@ Alguns screenshots da aplicação funcionando:
 ![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/a990bd30-7d94-4601-bacc-dadf0ff805fe)
 
 
-Print da maquina virtual rodando a aplicação:
-
-![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/3edf15ca-c018-45a3-8ef0-94e23496bc78)
-
-![image](https://github.com/SantanaRael/crud-node-express-postgres/assets/73674173/d78ed880-3f8a-43bc-837c-c390e69d3e25)
 
 
-## Execução do Projeto no ambiente de desenvolvimento:
-
-Executar minikube
-
-```sh
-minikube start
-```
-
-Subir o deployment e o service do banco de dados e da API manualmente.
-
-```sh
-cd k8s
-
-kubectl apply -f postgres-deployment.yaml
-
-kubectl apply -f api-deployment.yaml
-```
-
-Acessar API pelo navegador
-
-```sh
-minikube service api-service --url
-```
-
-Obeservação: Caso haja alguma alteração no Host ou na Porta do Postgres, será necessario atualizar a imagem da api no Docker-hub pelo seguinte passo a passo:
+Obeservação: Caso haja alguma alteração na API, será necessario atualizar a imagem da api no Docker-hub pelo seguinte passo a passo:
 
 
 ```sh
