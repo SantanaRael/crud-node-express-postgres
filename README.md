@@ -81,3 +81,6 @@ docker login
 
 docker push santanarael/minha-api:latest 
 ```
+
+
+Aviso: Ao adotar essa abordagem, é importante destacar que há uma instabilidade na API quando exposta a um grande volume de requisições, devido a limitações do banco de dados. Para contornar esse problema, optei por seguir os passos utilizando um banco de dados externo, especificamente o Amazon RDS da AWS. Vale ressaltar que a imagem da API não funciona corretamente no cluster devido à organização das pastas, que torna o arquivo .env invisível para a aplicação. A solução encontrada foi consolidar todos os arquivos na pasta raiz para compactar a imagem do Docker.
