@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: postgres
@@ -24,6 +24,13 @@ spec:
             value: meu-banco
         ports:
         - containerPort: 5432
+        resources:   
+          requests:
+            memory: "64Mi"   # Memória inicial / MI = milicores (1 core = 1000 milicores)
+            cpu: "50m"       # CPU inicial 
+          limits:
+            memory: "128Mi"  # Limite máximo de memória
+            cpu: "500m"      # Limite máximo de CPU  / M = megabytes
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +45,3 @@ spec:
       targetPort: 5432
       nodePort: 30001  
   type: NodePort
-
