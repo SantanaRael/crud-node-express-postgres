@@ -30,16 +30,41 @@ Instalar as dependências do projeto:
 npm install
 ```
 
-Subir o deployment e o service do banco de dados, API e front-end manualmente.
+Subir o deployment e o service do banco de dados.
 
 ```sh
 kubectl apply -f postgres-deployment.yaml
+```
 
+Criar uma tabela chamada "clientes" e adicionar dados, voce pode usar pqsl direto no terminal para fazer isso.
+
+
+Subir o deployment e o service da API e consultar as logs do pod para ver se nao houve nenhum erro.
+
+```sh
 kubectl apply -f api-deployment.yaml
+```
 
+Atualizar o configmap do front end com o link atualizado da API e aplicar.
+
+```sh
 kubectl apply -f frontend-configmap.yaml
+```
 
+
+Subir deployment e serivce do front-end.
+
+```sh
 kubectl apply -f frontend-deployment.yaml
+```
+
+
+Subir o HPA (horizontal pod autoscaler) da api e do postgres.
+
+```sh
+kubectl apply -f hpi-api.yaml
+
+kubectl apply -f hpi-postgres.yaml
 ```
 
 
@@ -83,4 +108,16 @@ docker push santanarael/minha-api:latest
 ```
 
 
-Aviso: Ao adotar essa abordagem, é importante destacar que há uma instabilidade na API quando exposta a um grande volume de requisições, devido a limitações do banco de dados. Para contornar esse problema, optei por seguir os passos utilizando um banco de dados externo, especificamente o Amazon RDS da AWS. Vale ressaltar que a imagem da API não funciona corretamente no cluster devido à organização das pastas, que torna o arquivo .env invisível para a aplicação. A solução encontrada foi consolidar todos os arquivos na pasta raiz para compactar a imagem do Docker.
+Aviso: 
+
+Caso esteja usando Minikube para testar é necessario habilitar as metricas do cluster com:
+
+```sh
+minikube addons enable metrics-server
+```
+
+Caso esteja usando uma provedora de serviços Cloud como AWS, Azure, GCP etc. é necessario adicionar um arquivo .yaml para as habilitar metricas.
+
+```sh
+https://docs.aws.amazon.com/pt_br/eks/latest/userguide/horizontal-pod-autoscaler.html
+```
