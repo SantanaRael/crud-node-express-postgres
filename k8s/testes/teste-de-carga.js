@@ -3,13 +3,12 @@ import { sleep, check } from 'k6';
 
 export let options = {
   stages: [
-    { duration: '100s', target: 5 }, // {Duração, Usuários virtuais}
-    { duration: '100s', target: 10 },
+    { duration: '100s', target: 12 }, // {Duração, Usuários virtuais}
   ],
 };
 
 export default function () {
-  let response = http.get('http://localhost:3000/clientes/');
+  let response = http.get('http://192.168.49.2:30303/clientes/');
   
   // Verifica se a resposta possui o status 200
   check(response, {

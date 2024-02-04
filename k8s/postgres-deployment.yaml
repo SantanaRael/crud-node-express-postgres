@@ -26,10 +26,10 @@ spec:
         - containerPort: 5432
         resources:   
           requests:
-            memory: "64Mi"   # Memória inicial / MI = milicores (1 core = 1000 milicores)
-            cpu: "50m"       # CPU inicial 
+            memory: "164Mi"   # Memória inicial / MI = milicores (1 core = 1000 milicores)
+            cpu: "100m"       # CPU inicial 
           limits:
-            memory: "128Mi"  # Limite máximo de memória
+            memory: "228Mi"  # Limite máximo de memória
             cpu: "500m"      # Limite máximo de CPU  / M = megabytes
 ---
 apiVersion: v1

@@ -95,19 +95,6 @@ Alguns screenshots da aplicação funcionando:
 
 
 
-
-Obeservação: Caso haja alguma alteração na API, será necessario atualizar a imagem da api no Docker-hub pelo seguinte passo a passo:
-
-
-```sh
-docker build -t santanarael/minha-api:latest .
-
-docker login
-
-docker push santanarael/minha-api:latest 
-```
-
-
 Aviso: 
 
 Caso esteja usando Minikube para testar é necessario habilitar as metricas do cluster com:
